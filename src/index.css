@@ -186,3 +186,8 @@ body, .app {
   cursor: pointer;
   outline: none;
 }
+
+h1{
+  text-align: center
+
+}

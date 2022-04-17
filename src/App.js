@@ -27,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>Contatcts App</h1>
       <ListOfContacts contactsList={contacts}/>
       </div>
     );
