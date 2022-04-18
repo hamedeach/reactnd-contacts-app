@@ -22,7 +22,9 @@ function ListOfContacts(props){
                             <p>{person.handle}</p>
 
                         </div>
-                        <button className="contact-remove">remove</button>
+                        <button className="contact-remove"   onClick={()=>
+                            (console.log('iam in remove contact'),
+                            props.onDeleteContact(person))}>remove</button>
                     </li>
 
                 ))
