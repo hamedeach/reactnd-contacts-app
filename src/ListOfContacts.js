@@ -10,8 +10,21 @@ class ListOfContacts extends React.Component{
             <ol className="contact-list">
                 {
                     lstOfContacts.map((person)=>(
-                        <li key={person.name}>
-                            {person.name}
+                        <li key={person.id} className="contact-list-item">
+
+                            
+                            <div className="contact-avatar" style={{
+                                backgroundImage : `url(${person.avatarURL})`
+
+                            }}>
+                            </div>
+                            
+                            <div className="contact-details">
+                                <p>{person.name}</p>
+                                <p>{person.handle}</p>
+
+                            </div>
+                            <button className="contact-remove">remove</button>
                         </li>
 
                     ))
