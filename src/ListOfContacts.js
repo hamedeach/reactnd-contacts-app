@@ -1,9 +1,10 @@
 import React from "react";
+import propTypes from "prop-types";
 
 // stateless function component instead of the class component 
 function ListOfContacts(props){
     let lstOfContacts = props['contactsList'];
-    console.log(lstOfContacts);
+   // console.log(lstOfContacts);
     return(
         <ol className="contact-list">
             {
@@ -22,9 +23,9 @@ function ListOfContacts(props){
                             <p>{person.handle}</p>
 
                         </div>
-                        <button className="contact-remove"   onClick={()=>
+                        <button className="contact-remove"   onClick={()=>(
                             (console.log('iam in remove contact'),
-                            props.onDeleteContact(person))}>remove</button>
+                            props.onDeleteContact(person)))}>remove</button>
                     </li>
 
                 ))
@@ -33,6 +34,15 @@ function ListOfContacts(props){
             }
         </ol>
     )    
+}
+
+//use the proptypes to specify the props type will the component use
+
+ListOfContacts.propTypes = {
+    contactsList : propTypes.array.isRequired,
+    onDeleteContact :propTypes.func.isRequired,
+    
+
 }
 
 
