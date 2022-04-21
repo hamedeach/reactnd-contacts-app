@@ -18,8 +18,10 @@ class ListOfContacts extends Component {
         this.setState(() => ({
             query: query.trim()
         }))
+    }
 
-
+    clearQuery(){
+        this.searchfunc('');
     }
 
 
@@ -29,8 +31,10 @@ class ListOfContacts extends Component {
         const lstOfContacts = this.props.contactsList;
         const onDeleteContact = this.props.onDeleteContact;
 
-        const showingContacts = query==='' ? lstOfContacts :(
-            lstOfContacts.filter((person)=>{person.name.toLowerCase().includes(query.toLocaleLowerCase())})
+
+        const showingContacts = query === '' ? (lstOfContacts) : (
+            lstOfContacts.filter((person) => { person.name.toLowerCase().includes(query.toLocaleLowerCase()) })
+
         )
 
         return (
@@ -48,6 +52,17 @@ class ListOfContacts extends Component {
                         onChange={(event) => this.searchfunc(event.target.value)}   >
 
                     </input>
+                    {
+                        showingContacts.length !== lstOfContacts.length && (
+                            <div className="showing-contacts">
+                                <span >Now showing {showingContacts.length} of {lstOfContacts.length}</span>
+                                <button onClick={(event)=> this.clearQuery()}>show All</button>
+                            </div>
+
+                        )
+                    }
+
+
 
                 </div>
                 <ol className="contact-list">
