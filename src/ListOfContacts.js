@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+import './index.css'
+import {Link} from 'react-router-dom';
+
 
 //  use the class component instead of stateless function component to use state management feature of the react to handler the search feature
 class ListOfContacts extends Component {
@@ -7,6 +10,7 @@ class ListOfContacts extends Component {
     static propTypes = {
         contactsList: propTypes.array.isRequired,
         onDeleteContact: propTypes.func.isRequired,
+        onNavigate:propTypes.func.isRequired,
     }
 
     state = {
@@ -20,7 +24,7 @@ class ListOfContacts extends Component {
         }))
     }
 
-    clearQuery(){
+    clearQuery() {
         this.searchfunc('');
     }
 
@@ -30,6 +34,7 @@ class ListOfContacts extends Component {
         const query = this.state.query;
         const lstOfContacts = this.props.contactsList;
         const onDeleteContact = this.props.onDeleteContact;
+        const onNavigate = this.props.onNavigate;
 
 
         const showingContacts = query === '' ? (lstOfContacts) : (
@@ -52,12 +57,19 @@ class ListOfContacts extends Component {
                         onChange={(event) => this.searchfunc(event.target.value)}   >
 
                     </input>
+                    <Link
+            to='/create'
+            
+          >Add Contact</Link>
+
+
+
                     {
                         // && guard up operator
                         showingContacts.length !== lstOfContacts.length && (
                             <div className="showing-contacts">
                                 <span >Now showing {showingContacts.length} of {lstOfContacts.length}</span>
-                                <button onClick={(event)=> this.clearQuery()}>show All</button>
+                                <button onClick={(event) => this.clearQuery()}>show All</button>
                             </div>
 
                         )
