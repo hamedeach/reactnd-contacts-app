@@ -53,6 +53,7 @@ class ListOfContacts extends Component {
 
                     </input>
                     {
+                        // && guard up operator
                         showingContacts.length !== lstOfContacts.length && (
                             <div className="showing-contacts">
                                 <span >Now showing {showingContacts.length} of {lstOfContacts.length}</span>
