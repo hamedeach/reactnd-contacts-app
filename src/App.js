@@ -8,7 +8,7 @@ class App extends Component {
   //add the contacts array into state property 
   state = {
     contacts: [],
-    screen : 'list'
+    
   }
 
   componentDidMount(){
@@ -40,7 +40,7 @@ class App extends Component {
       <div>
         <h1>Contatcts App</h1>
         <Route exact path='/' render={()=>(
-           <ListOfContacts contactsList={this.state.contacts} onDeleteContact ={this.removeContact} onNavigate={this.onNavigate}/>
+           <ListOfContacts contactsList={this.state.contacts} onDeleteContact ={this.removeContact} />
         )}
         />
        
